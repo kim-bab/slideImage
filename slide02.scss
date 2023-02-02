@@ -1,0 +1,164 @@
+body {
+  position: relative;
+  font-family: 'SCoreDream';
+  width: 100%;
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1557672211-0741026eacfb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80') no-repeat bottom;
+  background-size: cover;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+    background: rgba(230, 205, 174, 0.7);
+  }
+}
+
+$wColor: #fff;
+$bColor: #191919;
+
+aside {
+  .mouse-wrap {
+    z-index: 99;
+    line-height: 1.5;
+    position: fixed;
+    padding: 10px;
+    bottom: 10px;
+    font-weight: 100;
+    left: 10px;
+    border-radius: 15px;
+    color: $wColor;
+  }
+}
+
+header {
+  z-index: 9;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+  color: $wColor;
+
+  h1 {
+    text-transform: capitalize;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-weight: 100;
+    border-bottom: 1px dashed $wColor;
+  }
+
+  h3 {
+    font-weight: 100;
+    margin-bottom: 10px;
+  }
+
+  .menu-wrap {
+    ul {
+      li {
+        margin: 0 2px;
+        border: 1px solid $wColor;
+        border-radius: 50%;
+        display: inline-block;
+
+        a {
+          padding: 8px 11px;
+          color: $wColor;
+          display: block;
+        }
+      }
+
+      .menu-active {
+        background: $wColor;
+
+        a {
+          font-weight: 700;
+          color: $bColor;
+        }
+      }
+    }
+  }
+}
+
+
+main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .inner-wrap {
+    font-size: 0;
+    width: 900px;
+    height: 50vh;
+    overflow: hidden;
+
+    ul {
+      width: 5400px;
+      transition: all .6s ease;
+      li {
+        display: inline-block;
+        width: 900px;
+        height: 50vh;
+        img {
+          object-fit: cover;
+          object-position: center;
+          width: 100%;
+          height: 100%;
+        }
+        @for $i from 1 through 6{
+          &:nth-child(#{$i}){
+        position: relative;
+            &::after{
+              content: "#{이미지$i}";
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              color: $wColor;
+              font-size: .8vw;
+              background: rgba(0,0,0,.6);
+              padding: 10px;
+              margin: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+  }
+
+@media (max-width: 1000px) {
+  header {
+    text-align: center;
+    padding: 20px 0;
+    display: block;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    h1 {
+      font-size: 22px;
+      line-height: 1.3;
+      word-break: keep-all;
+    }
+  }
+
+  main{
+    .inner-wrap{
+      width: calc(100vw - 50px);
+      ul{
+        li{
+          width: calc(100vw - 50px);
+        }
+      }
+    }
+  }
+}
